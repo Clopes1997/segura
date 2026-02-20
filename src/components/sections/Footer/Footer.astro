@@ -1,0 +1,373 @@
+---
+import type { FooterContent } from '../../content/types';
+import { isPt } from '../../../lib/locale';
+
+interface Props {
+  content: FooterContent;
+  lang: 'en' | 'pt' | 'pt-br';
+}
+
+const { content, lang } = Astro.props;
+const pt = isPt(lang);
+---
+
+<section class="footer bg-almost-white font-base">
+  <div class="footer_container container mx-auto py-8 flex flex-col gap-10 w-full max-md:max-w-full items-start">
+    <div class="row flex flex-col lg:flex-row gap-8 justify-between">
+      <div class="card flex justify-center border-2 border-safe-green text-safe-green rounded-xl lg:w-1/4 h-3/4 items-center">
+        <div class="content-card flex flex-col justify-center gap-4 p-10 w-full">
+          <h3 class="font-semibold text-safe-green font-title">{content.stayConnected.title}</h3>
+          <p class="font-normal text-safe-green">{content.stayConnected.description}</p>
+          <a href={pt ? '/pt-br/blog' : '/blog'} class="outlined-btn hovered flex gap-4">
+            {content.stayConnected.ctaText}
+          </a>
+        </div>
+      </div>
+
+      <div class="lists_holder flex flex-col md:flex-row md:w-full justify-around gap-4 md:gap-0">
+        <div class="list flex flex-col gap-4 px-2">
+          <h3 class="font-semibold text-safe-green border-b-2 border-safe-green font-title pb-2">{content.support.title}</h3>
+          <ul class="flex flex-col gap-2">
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? 'https://docs.senhasegura.io/v4/docs/pt/senhasegura' : 'https://docs.senhasegura.io/v4/docs/en/senhasegura'}>{content.support.documentation}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/servicos/centro-de-solucoes' : '/services/solution-center'}>{content.support.solutionCenter}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/sugestoes' : '/suggestions'}>{content.support.suggestions}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/servicos/treinamento-e-certificacao' : '/services/training-and-certification'}>{content.support.trainingAndCertification}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/servicos/implementacao-e-consultoria' : '/services/deployment-and-consulting'}>{content.support.deploymentAndConsulting}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/politicas-e-termos/politica-de-suporte' : '/policies-and-terms/support-policy'}>{content.support.supportPolicy}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="list flex flex-col gap-4 px-2">
+          <h3 class="font-semibold text-safe-green border-b-2 border-safe-green font-title pb-2">{content.resources.title}</h3>
+          <ul class="flex flex-col gap-2">
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/blog' : '/blog'}>{content.resources.blog}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/recursos' : '/resources'}>{content.resources.eBooks}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/recursos' : '/resources'}>{content.resources.whitepapers}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? 'https://lp.senhasegura.co/PT/RICH-MATERIALS' : 'https://lp.senhasegura.co/EN/RICH-MATERIALS'}>{content.resources.datasheets}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/recursos' : '/resources'}>{content.resources.infographics}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/casos-de-cliente' : '/customer-cases'}>{content.resources.caseStudies}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/webinars-e-eventos' : '/webinars-and-events'}>{content.resources.webinarsAndEvents}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="list flex flex-col gap-4 px-2">
+          <h3 class="font-semibold text-safe-green border-b-2 border-safe-green font-title pb-2">{content.partners.title}</h3>
+          <ul class="flex flex-col gap-2">
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/parceiros/sobre-o-programa' : '/partners/about-the-program'}>{content.partners.aboutTheProgram}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/parceiros/torne-se-parceiro' : '/partners/become-a-partner'}>{content.partners.becomeAPartner}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/parceiros/sobre-o-programa' : '/partners/about-the-program'}>{content.partners.securityAllianceProgram}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href="https://university.segura.security/plus/">{content.partners.university}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="list flex flex-col gap-4 px-2">
+          <h3 class="font-semibold text-safe-green border-b-2 border-safe-green font-title pb-2">{content.company.title}</h3>
+          <ul class="flex flex-col gap-2">
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/sobre' : '/about'}>{content.company.aboutUs}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/empresa/conquistas' : '/company/achievements'}>{content.company.achievements}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/empresa/carreira' : '/company/career'}>{content.company.workWithUs}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/empresa/operacoes' : '/company/operations'}>{content.company.operations}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/politica-de-privacidade-e-cookies' : '/privacy-and-cookie-statement'}>{content.company.termsOfUse}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/politica-de-privacidade-e-cookies' : '/privacy-and-cookie-statement'}>{content.company.privacyAndCookiePolicy}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/politicas-e-termos/politica-de-seguranca-da-informacao' : '/policies-and-terms/information-security-policy'}>{content.company.informationSecurityPolicy}</a>
+            </li>
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? 'https://canal.ouvidordigital.com.br/segura?lang=pt' : 'https://canal.ouvidordigital.com.br/segura?lang=en'}>{content.company.whistleblowingChannel}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="list flex flex-col gap-4 px-2">
+          <h3 class="font-semibold text-safe-green border-b-2 border-safe-green font-title pb-2">{content.usCenter.title}</h3>
+          <ul class="flex flex-col gap-2">
+            <li class="font-normal text-safe-green py-3 px-4 hover:bg-password-green hover:bg-opacity-10 hover:rounded-lg hover:cursor-pointer hover:text-future-green">
+              <a href={pt ? '/pt-br/sobre' : '/about'}>
+                {pt ? (
+                  <>
+                    {content.usCenter.address}
+                    <br /><br />
+                    <b>{content.usCenter.phone1}</b>
+                  </>
+                ) : (
+                  <>
+                    <b>{content.usCenter.centerOfExcellence}</b>
+                    <br /><br />
+                    {content.usCenter.address}
+                    <br /><br />
+                    <b>{content.usCenter.zipCode}, {content.usCenter.country}</b>
+                    <br /><br />
+                    <b>{content.usCenter.phone1}</b>
+                    <br /><br />
+                    <b>{content.usCenter.phone2}</b>
+                  </>
+                )}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full">
+      <img
+        src="/logos/segura-logo-tagline.png"
+        alt="Segura logo"
+        class="footer_logo w-3/4 md:w-1/5"
+        width="460"
+        height="94"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+</section>
+
+<section class="footer_ai_section font-base" style="background-color: #f0f9f8;">
+  <div class="py-8 container mx-auto flex flex-col md:flex-row gap-10 w-full justify-between max-md:max-w-full">
+    <div class="social_row flex flex-col md:flex-row justify-between md:items-end gap-4 md:gap-0">
+          <div class="flex flex-col gap-3">
+            <div>
+              <p class="font-light font-base text-sm text-safe-green">{content.aiPrompt.text}</p>
+            </div>
+            <div class="social_holder flex gap-2">
+              <a
+                href="https://chat.openai.com/?q=Summarize%20Segura%C2%AE%2C%20a%20global%20identity-first%20PAM%20platform%20and%202025%20Gartner%20MQ%20Challenger.%20Explain%20its%20core%20capabilities%20and%20why%20organizations%20choose%20it."
+                class="social_icon"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/icons/chatgpt.svg"
+                  alt="ChatGPT"
+                  class="w-2/3"
+                  width="37"
+                  height="37"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <a
+                href="https://www.perplexity.ai/search/?q=Provide%20a%20short%2C%20neutral%20summary%20of%20Segura%C2%AE%2C%20the%20worldwide%20identity%20and%20access%20security%20platform%20recognized%20as%20a%202025%20Gartner%20Magic%20Quadrant%20Challenger%20for%20PAM.%20Focus%20on%20fast%20deployment%2C%20lower%20TCO%2C%20privileged%20access%20controls%2C%20password%20rotation%2C%20session%20monitoring%2C%20vendor%20access%20workflows%2C%20machine%20identity%20protection%2C%20and%20audit%20readiness.%20Bullet%20the%20key%20points"
+                class="social_icon"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/icons/perplexity.svg"
+                  alt="Perplexity"
+                  class="w-2/3"
+                  width="46"
+                  height="46"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <a
+                href="https://copilot.microsoft.com/shares/BjcyHPhPMtx2R91uCaN2G"
+                class="social_icon"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/icons/copilot.svg"
+                  alt="Copilot"
+                  class="w-2/3"
+                  width="41"
+                  height="41"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <a
+                href="https://www.google.com/search?udm=50&amp;aep=11&amp;q=Give%20a%20clear%20summary%20of%20Segura%C2%AE%2C%20a%20global%20identity-first%20PAM%20platform%20and%202025%20Gartner%20MQ%20Challenger.%20Highlight%20fast%20deployment%2C%20lower%20TCO%2C%20password%20rotation%2C%20session%20recording%2C%20vendor%20access%2C%20machine%20identity%2C%20and%20audit-ready%20visibility.%20Keep%20the%20takeaways%20simple%20and%20practical"
+                class="social_icon"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/icons/gemini.svg"
+                  alt="Gemini"
+                  class="w-2/3"
+                  width="38"
+                  height="38"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <a
+                href="https://grok.com/c/fe688ad2-d18b-43f9-9bb3-45948a13bb04?rid=8d68592c-8a5c-41c3-bf08-354bb83d9837"
+                class="social_icon"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/icons/grok.svg"
+                  alt="Grok"
+                  class="w-2/3"
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </div>
+            <p class="font-light text-sm text-safe-green">{content.copyright}</p>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-6 md:items-end justify-end">
+          <div class="social_holder flex gap-2">
+            <a
+              href="https://www.linkedin.com/company/segurasecurity/"
+              class="social_icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/icons/linkedin.svg"
+                alt="LinkedIn"
+                width="28"
+                height="28"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="https://x.com/segura_security"
+              class="social_icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/icons/twitter-x.svg"
+                alt="Twitter X"
+                width="28"
+                height="28"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="https://www.facebook.com/seguraidentity"
+              class="social_icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/icons/facebook.svg"
+                alt="Facebook"
+                width="28"
+                height="28"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="https://instagram.com/segura.security"
+              class="social_icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/icons/instagram.svg"
+                alt="Instagram"
+                width="28"
+                height="28"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UCpDms35l3tcrfb8kZSpeNYw"
+              class="social_icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/icons/youtube.svg"
+                alt="YouTube"
+                width="28"
+                height="28"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="https://wa.me/5511974829520"
+              class="social_icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/icons/whatsapp.svg"
+                alt="WhatsApp"
+                width="28"
+                height="28"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+          <div class="copyright flex flex-wrap justify-between gap-4">
+            <div class="terms flex gap-8">
+              <a href={pt ? '/pt-br/politica-de-privacidade-e-cookies' : '/privacy-and-cookie-statement'}>
+                <p class="font-light text-sm text-safe-green">{content.terms}</p>
+              </a>
+              <a href={pt ? '/pt-br/politica-de-privacidade-e-cookies' : '/privacy-and-cookie-statement'}>
+                <p class="font-light text-sm text-safe-green">{content.privacy}</p>
+              </a>
+              <a href={pt ? '/pt-br/politica-de-privacidade-e-cookies' : '/privacy-and-cookie-statement'}>
+                <p class="font-light text-sm text-safe-green">{content.cookies}</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>

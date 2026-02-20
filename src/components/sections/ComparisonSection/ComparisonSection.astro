@@ -1,0 +1,43 @@
+---
+import type { ComparisonContent } from '../../../content/types';
+
+interface Props {
+  content: ComparisonContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="media_text_position_section bg-almost-white text-almost-black py-60">
+  <div class="content_container flex flex-col container w-full max-md:max-w-full mx-auto text-center justify-center items-center gap-10">
+    <div class="header flex flex-col gap-4 md:w-2/3">
+      <h2 class="text-media-position-title text-4xl font-title font-semibold w-full text-safe-green">
+        {content.title}
+      </h2>
+      <p class="text-media-position-description text-lg font-normal leading-7 max-md:max-w-full text-safe-green" set:html={content.description} />
+    </div>
+    <div class="text-media-position flex flex-col max-w-none w-full items-center justify-center">
+      <img
+        src="/images/comparison-table-mobile.gif"
+        alt="Comparison Segura® with competitors"
+        class="img rounded-10 block md:hidden"
+        width="1133"
+        height="951"
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        src="/images/comparison-table-desktop.png"
+        alt="Comparison Segura® with competitors"
+        class="img rounded-10 hidden md:block"
+        width="1600"
+        height="805"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div class="btns_holder flex flex-col md:flex-row gap-3">
+      <a href={content.ctaLink} class="demo-btn hovered">{content.ctaText}</a>
+    </div>
+  </div>
+</section>

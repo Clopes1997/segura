@@ -1,0 +1,118 @@
+---
+import '../styles/vendor/global.css';
+import '../styles/vendor/global-supplement.css';
+import Navigation from '../components/navigation/Navigation.astro';
+import Footer from '../components/sections/Footer/Footer.astro';
+import navigationEn from '../content/en/navigation';
+import navigationPt from '../content/pt/navigation';
+import footerEn from '../content/en/footer';
+import footerPt from '../content/pt/footer';
+import { isPt } from '../lib/locale';
+
+interface Props {
+  lang: string;
+  title?: string;
+  description?: string;
+  canonical?: string;
+  robots?: string;
+}
+const { lang, title: titleProp, description: descriptionProp, canonical: canonicalProp, robots: robotsProp } = Astro.props;
+const pt = isPt(lang);
+const navigation = pt ? navigationPt : navigationEn;
+const footer = pt ? footerPt : footerEn;
+const defaultTitle = pt
+  ? 'Segura® (anteriormente senhasegura) - Gestão de Acesso Privilegiado'
+  : 'Segura®, formerly senhasegura - The Complete Identity Security Platform';
+const defaultDescription = pt
+  ? 'Segura® - Gestão de Acesso Privilegiado e plataforma completa de segurança de identidade. Anteriormente senhasegura.'
+  : 'Segura® - The Complete Identity Security Platform. Formerly senhasegura. Privileged Access Management and identity security.';
+const title = titleProp ?? defaultTitle;
+const description = descriptionProp ?? defaultDescription;
+const canonical = canonicalProp ?? `${Astro.url.origin}${Astro.url.pathname}`;
+const robots = robotsProp ?? 'index, follow';
+const ogImage = `${Astro.url.origin}/openGraphs/og_2.png`;
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Segura',
+  url: Astro.url.origin,
+  logo: `${Astro.url.origin}/logos/segura-logo-tagline.png`,
+};
+---
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.png" />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={robots} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  </head>
+  <body class="bg-password-green">
+    <Navigation lang={lang as 'en' | 'pt' | 'pt-br'} navigation={navigation} currentPathname={Astro.url.pathname} />
+    <slot />
+    <Footer content={footer} lang={lang as 'en' | 'pt' | 'pt-br'} />
+
+    {pt && (
+      <>
+        <style>
+          #whatsapp-button {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            transition: background-color 0.3s ease;
+          }
+          #whatsapp-button:hover {
+            background-color: #1ebe57;
+          }
+          #whatsapp-button img {
+            width: 35px;
+            height: 35px;
+            user-select: none;
+            pointer-events: none;
+          }
+        </style>
+        <div id="whatsapp-button" title="Enviar mensagem no WhatsApp" aria-label="Botão WhatsApp" role="button" tabindex="0">
+          <img src="/icons/whatsapp-floating.svg" alt="Ícone do WhatsApp" />
+        </div>
+        <script>
+          (function() {
+            const phone = '5511974829520';
+            const message = 'Olá, quero mais informações sobre a Segura®.';
+            const encodedMessage = encodeURIComponent(message);
+
+            const whatsappButton = document.getElementById('whatsapp-button');
+            function openWhatsApp() {
+              const url = `https://wa.me/${phone}?text=${encodedMessage}`;
+              window.open(url, '_blank');
+            }
+            whatsappButton?.addEventListener('click', openWhatsApp);
+            whatsappButton?.addEventListener('keydown', function(e) {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openWhatsApp();
+              }
+            });
+          })();
+        </script>
+      </>
+    )}
+  </body>
+</html>

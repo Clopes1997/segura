@@ -1,0 +1,222 @@
+---
+Astro.response.status = 404;
+import MainLayout from '../layouts/MainLayout.astro';
+import { isPt } from '../lib/locale';
+
+const pathname = Astro.url.pathname;
+const lang = pathname.startsWith('/pt-br') ? 'pt-br' : 'en';
+const pt = isPt(lang);
+const homeHref = pt ? '/pt-br' : '/';
+
+const copy = pt
+  ? {
+      label: '(404) PÁGINA NÃO ENCONTRADA',
+      title: 'Falha de identidade: página não encontrada',
+      line1: 'Esta página está fora do escopo da versão demonstrativa atual.',
+      line2: 'Esta implementação concentra-se exclusivamente na página inicial.',
+      homeBtn: 'Ir para a Página Inicial ›',
+      repoHeading: 'Repositório do projeto:',
+      repoLinkSegura: 'Segura',
+      repoLinkProfile: 'Clopes1997',
+    }
+  : {
+      label: '(404) PAGE NOT FOUND',
+      title: 'Identity Mismatch: Page Not Found',
+      line1: 'This page is outside the scope of the current demonstration build.',
+      line2: 'This implementation focuses exclusively on the landing page.',
+      homeBtn: 'Go to the Homepage ›',
+      repoHeading: 'Project repository:',
+      repoLinkSegura: 'Segura',
+      repoLinkProfile: 'Clopes1997',
+    };
+
+const repoUrl = 'https://github.com/Clopes1997/segura';
+const profileUrl = 'https://github.com/Clopes1997';
+const title404 = pt ? 'Página não encontrada | Segura®' : 'Page Not Found | Segura®';
+const canonicalHome = `${Astro.url.origin}${pt ? '/pt-br/' : '/'}`;
+---
+
+<MainLayout
+  lang={lang}
+  title={title404}
+  description={copy.line1}
+  canonical={canonicalHome}
+  robots="noindex, follow"
+>
+  <main class="page-404">
+    <section class="page-404__section">
+      <div class="page-404__inner">
+        <p class="page-404__label">{copy.label}</p>
+        <h1 class="page-404__title">{copy.title}</h1>
+        <p class="page-404__line1">{copy.line1}</p>
+        <p class="page-404__line2">{copy.line2}</p>
+        <div class="page-404__image-wrap">
+          <img
+            src="/gifs/404.gif"
+            alt=""
+            class="page-404__image"
+            width="400"
+            height="250"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div class="page-404__actions">
+          <a href={homeHref} class="page-404__btn page-404__btn--home">
+            {copy.homeBtn}
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="page-404__github">
+      <div class="page-404__github-inner">
+        <h2 class="page-404__github-heading">{copy.repoHeading}</h2>
+        <p class="page-404__github-links">
+          <a href={repoUrl} target="_blank" rel="noopener noreferrer" class="page-404__github-link">{copy.repoLinkSegura}</a>
+        </p>
+        <p class="page-404__github-links">
+          <a href={profileUrl} target="_blank" rel="noopener noreferrer" class="page-404__github-link">{copy.repoLinkProfile}</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .page-404 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .page-404__section {
+      min-height: 100vh;
+      background-color: #1e5a4e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1.5rem 4rem;
+      margin-top: 0;
+      padding-top: 14rem;
+    }
+    @media (min-width: 768px) {
+      .page-404__section {
+        padding-top: 16rem;
+      }
+    }
+    .page-404__inner {
+      max-width: 42rem;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .page-404__label {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: #66b28f;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin: 0;
+    }
+    .page-404__title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+      line-height: 1.2;
+    }
+    .page-404__line1,
+    .page-404__line2 {
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: #fff;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .page-404__image-wrap {
+      width: 100%;
+      max-width: 22rem;
+      margin: 1.5rem auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .page-404__image {
+      width: 100%;
+      height: auto;
+      max-height: 14rem;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      object-fit: contain;
+    }
+    .page-404__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .page-404__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      font-family: SeguraFont, serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+    .page-404__btn--home {
+      background-color: #fff;
+      border: 2px solid #66b28f;
+      color: #66b28f;
+    }
+    .page-404__btn--home:hover {
+      background-color: #f0f0f0;
+      border-color: #5a9e7d;
+      color: #5a9e7d;
+    }
+    .page-404__github {
+      background-color: #9af1dc;
+      padding: 4rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .page-404__github-inner {
+      max-width: 42rem;
+      width: 100%;
+      text-align: center;
+    }
+    .page-404__github-heading {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      font-weight: 700;
+      color: #003a32;
+      margin: 0 0 0.5rem 0;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+    .page-404__github-links {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #003a32;
+      margin: 0 0 0.25rem 0;
+      font-family: inherit;
+    }
+    .page-404__github-url {
+      color: #003a32;
+    }
+    .page-404__github-link {
+      display: inline-block;
+      font-size: 1rem;
+      color: #2563eb;
+      text-decoration: underline;
+      margin: 0;
+    }
+    .page-404__github-link:hover {
+      color: #1d4ed8;
+    }
+  </style>
+</MainLayout>

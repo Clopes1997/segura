@@ -1,0 +1,39 @@
+---
+import type { BlogCardsContent } from '../../../content/types';
+
+interface Props {
+  content: BlogCardsContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="cards_slider_section py-60 font-base bg-almost-white text-safe-green">
+  <div class="content_holder flex flex-col items-center gap-8 w-full max-md:max-w-full container mx-auto">
+    <div class="header flex flex-col text-center gap-2">
+      <h2 class="text-4xl font-semibold font-title">{content.title}</h2>
+      <p class="text-lg font-normal">{content.description}</p>
+    </div>
+    <div class="scroll_container max-w-full w-full overflow-x-visible">
+      <div class="cards_holder flex gap-4 flex-col md:flex-row justify-center">
+        {content.cards.map((card) => (
+          <div class="card md:flex-1 rounded-xl flex flex-col gap-4 items-center text-center">
+            <div class="image__placeholder">
+              <a href={card.link}>
+                <img
+                  src={card.image}
+                  alt=""
+                  class="rounded-10"
+                  width="300"
+                  height="200"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

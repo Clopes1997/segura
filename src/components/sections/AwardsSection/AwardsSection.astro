@@ -1,0 +1,97 @@
+---
+import type { AwardsContent } from '../../../content/types';
+
+interface Props {
+  content: AwardsContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="text_media_proportion font-base bg-almost-white py-60 mt-0">
+  <div class="content_container container mx-auto w-full max-md:max-w-full">
+    <div class="proportion_holder w-full grid grid-cols-1 md:grid-cols-12 md:gap-y-8 gap-x-3 md:gap-x-12 items-start gap-10">
+      <div class="image_holder order-1 md:order-none col-span-12 md:col-span-6">
+        <h2 class="title-top text-4xl mb-4 font-title pb-6 text-safe-green font-semibold">
+          {content.title}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 grid-cols-2">
+          <div class="flex justify-start md:justify-center">
+            <img
+              src="/images/award-peer-insights.webp"
+              alt=""
+              class="img block max-w-full h-auto rounded-10 object-contain w-full md:w-1/2 md:w-2/3"
+              width="396"
+              height="336"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="flex justify-start md:justify-center">
+            <img
+              src="/images/award-gartner-mq.webp"
+              alt=""
+              class="img block max-w-full h-auto rounded-10 object-contain w-full md:w-1/2 md:w-2/3"
+              width="450"
+              height="167"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="flex justify-start md:justify-center">
+            <img
+              src="/images/award-gold-medal.avif"
+              alt=""
+              class="img block max-w-full h-auto rounded-10 object-contain w-full md:w-1/2 md:w-2/3"
+              width="237"
+              height="200"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="flex justify-start md:justify-center">
+            <img
+              src="/images/award-cybersecurity-winner.avif"
+              alt=""
+              class="img block max-w-full h-auto rounded-10 object-contain w-full md:w-1/2 md:w-2/3"
+              width="144"
+              height="200"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="flex justify-start md:justify-center">
+            <img
+              src="/images/award-leadership-kuppingercole.avif"
+              alt=""
+              class="img block max-w-full h-auto rounded-10 object-contain w-full md:w-1/2 md:w-2/3"
+              width="169"
+              height="200"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="flex justify-start md:justify-center">
+            <img
+              src="/images/award-leader-fall-2023.avif"
+              alt=""
+              class="img block max-w-full h-auto rounded-10 object-contain w-full md:w-1/2 md:w-2/3"
+              width="177"
+              height="200"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="text_holder order-2 md:order-none min-w-0 flex flex-col gap-4 h-full justify-center break-words col-span-12 md:col-span-6 text-safe-green border-l-2 solid border-password-green">
+        <p class="text-xl font-normal pl-5 text-safe-green">
+          <em set:html={content.quote} />
+        </p>
+        <h4 class="feature-span-extra text-base pt-4 font-normal font-title text-future-green text-almost-black pl-5">
+          <em>{content.author}</em>
+        </h4>
+      </div>
+    </div>
+  </div>
+</section>

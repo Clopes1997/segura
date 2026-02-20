@@ -1,0 +1,14 @@
+---
+import Navigation from './Navigation.tsx';
+import type { NavigationContent } from '../../content/types';
+
+interface Props {
+  lang: 'en' | 'pt' | 'pt-br';
+  navigation: NavigationContent;
+  currentPathname: string;
+}
+
+const { lang, navigation, currentPathname } = Astro.props;
+---
+
+<Navigation client:load lang={lang} navigation={navigation} currentPathname={currentPathname} />

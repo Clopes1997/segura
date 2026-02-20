@@ -1,0 +1,22 @@
+---
+import type { StripeCTAContent } from '../../../content/types';
+
+interface Props {
+  content: StripeCTAContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="stripe_section bg-future-green text-almost-white mt-0 py-0">
+  <div class="content_container container mx-auto py-4 w-full max-md:max-w-full justify-center">
+    <div class="content_holder flex flex-wrap gap-5 font-normal text-center justify-center">
+      <div class="content flex flex-col sm:flex-row gap-1 items-center">
+        <p class="text-lg font-title">{content.text}</p>
+      </div>
+      <a href={content.ctaLink} class="text-password-green font-title">
+        <b><u>{content.ctaText}</u></b>
+      </a>
+    </div>
+  </div>
+</section>

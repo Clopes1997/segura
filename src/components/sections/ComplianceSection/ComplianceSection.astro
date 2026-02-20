@@ -1,0 +1,74 @@
+---
+import type { ComplianceContent } from '../../../content/types';
+
+interface Props {
+  content: ComplianceContent;
+}
+
+const { content } = Astro.props;
+
+const iconMap: Record<string, string> = {
+  'ISO 27001': 'iso-icon.svg',
+  'PCI DSS': 'pci-icon.svg',
+  'HIPAA': 'hipaa-icon.svg',
+  'GDPR': 'gdpr-icon.svg',
+  'SOX': 'sox-icon.svg'
+};
+---
+
+<section class="text_media_proportion font-base bg-safe-green py-60 mt-0">
+  <div class="content_container container mx-auto w-full max-md:max-w-full">
+    <div class="proportion_holder w-full grid grid-cols-1 md:grid-cols-12 md:gap-y-8 gap-x-3 md:gap-x-12 items-start gap-10">
+      <div class="text_holder order-2 md:order-none min-w-0 flex flex-col gap-4 h-full justify-center break-words col-span-12 md:col-span-6 text-almost-white border-none">
+        <h2 class="text-4xl font-title text-almost-white font-semibold p-0">
+          {content.title}
+        </h2>
+        <p class="text-xl font-normal p-0 text-almost-white" set:html={`${content.introText} ${content.description} <br /><br /><span class='font-title text-xl'><em>${content.emphasis}</em></span>`} />
+        <div class="btns_holder flex flex-row flex-wrap gap-4 mt-3 p-0">
+          <a class="demo-btn hovered undefined" href={content.ctaLink}>
+            {content.ctaText}
+          </a>
+        </div>
+      </div>
+
+      <div class="image_holder col-span-12 md:col-span-6">
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-8 grid-cols-1">
+          <div class="flex justify-start md:justify-center">
+            <img
+              src="/images/woman-talking.png"
+              alt=""
+              class="img block max-w-full h-auto rounded-10 object-contain w-full"
+              width="605"
+              height="402"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-full py-10 flex flex-col gap-4">
+      <p class="cta-title text-almost-white">Be audit-ready for:</p>
+      <div class="cta_holder_full flex flex-col md:flex-row w-full gap-8">
+        {content.standards.map((standard) => (
+          <a
+            href={standard.link}
+            class="btn-cta-full flex items-center justify-center gap-2 !w-full text-center flex-1 white-btn hovered"
+          >
+            <img
+              src={`/icons/${iconMap[standard.name]}`}
+              alt=""
+              class="inline-block"
+              width="21"
+              height="20"
+              loading="lazy"
+              decoding="async"
+            />
+            {standard.name} ›
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

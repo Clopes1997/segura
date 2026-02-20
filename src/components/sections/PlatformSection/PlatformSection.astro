@@ -1,0 +1,36 @@
+---
+import type { PlatformContent } from '../../../content/types';
+
+interface Props {
+  content: PlatformContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="text_media_proportion font-base bg-almost-white py-60 mt-0" id="platform">
+  <div class="content_container container mx-auto w-full max-md:max-w-full">
+    <div class="proportion_holder w-full grid grid-cols-1 md:grid-cols-12 md:gap-y-8 gap-x-3 md:gap-x-12 items-start gap-10">
+      <div class="text_holder order-2 md:order-none min-w-0 flex flex-col gap-4 h-full justify-center break-words col-span-12 md:col-span-6 text-safe-green border-none">
+        <h1 class="text-4xl font-title text-safe-green font-medium">{content.title}</h1>
+        <h3 class="feature-subtitle text-3xl font-title font-medium text-safe-green">{content.subtitle}</h3>
+        <p class="text-xl font-normal p-0 text-safe-green" set:html={content.description} />
+        <div class="btns_holder flex flex-row flex-wrap gap-4 mt-3 p-0">
+          <a class="demo-btn hovered undefined" href={content.ctaPrimaryLink}>
+            {content.ctaPrimary}
+          </a>
+          <a class="outlined-btn hovered undefined" href={content.ctaSecondaryLink}>
+            {content.ctaSecondary}
+          </a>
+        </div>
+      </div>
+
+      <div class="image_holder col-span-12 md:col-span-6">
+        <video autoplay muted loop playsinline class="w-full h-auto rounded-10">
+          <source src="/videos/segura-mandala-video.mp4" type="video/mp4" />
+          Seu navegador não suporta vídeos HTML5.
+        </video>
+      </div>
+    </div>
+  </div>
+</section>

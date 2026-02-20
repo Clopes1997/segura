@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const partnerLogos = Array.from({ length: 12 }, (_, i) => i + 1);
+---
+
+<section class="partners_grid_section bg-almost-white py-60">
+  <div class="content_holder container mx-auto flex flex-col gap-10 items-center w-full max-md:max-w-full">
+    <div class="header text-center text-safe-green">
+      <h2 class="font-title font-semibold text-3xl">{title}</h2>
+    </div>
+    <div class="partners_grid grid grid-cols-1 md:grid-cols-6 gap-8 grid-cols-2 items-center justify-center place-items-center gap-12">
+      {partnerLogos.map((num) => (
+        <img 
+          src={`/logos/partner-logo-${num}.png`}
+          alt="partner logo" 
+          class="w-1/2" 
+          width={num === 5 ? 800 : num === 4 ? 228 : num === 1 ? 149 : num === 2 ? 96 : num === 3 ? 146 : num === 6 ? 167 : num === 7 ? 176 : num === 8 ? 118 : num === 9 ? 201 : num === 10 ? 158 : num === 11 ? 120 : 95}
+          height={num === 5 ? 266 : num === 4 ? 51 : 61}
+          loading="lazy" 
+          decoding="async"
+        />
+      ))}
+    </div>
+  </div>
+</section>

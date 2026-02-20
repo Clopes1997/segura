@@ -1,0 +1,33 @@
+---
+import type { SoftwareReviewContent } from '../../../content/types';
+
+interface Props {
+  content: SoftwareReviewContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="bg-almost-white py-60 flex relative flex-col w-full font-base">
+  <div class="flex items-center gap-8 container mx-auto flex-col lg:flex-row w-full max-md:max-w-full">
+    <div class="flex-1 w-full">
+      <img
+        src="/images/software-review-quadrant.png"
+        alt="Quadrant image"
+        width="677"
+        height="704"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div class="flex-1 w-full flex flex-col gap-6">
+      <h2 class="text-4xl font-semibold font-title text-safe-green">
+        {content.title}
+      </h2>
+      <p class="text-safe-green font-normal text-lg whitespace-pre-line">
+        {content.description}
+      </p>
+      <a href={content.ctaLink} class="mt-3 md:mt-0 main-btn hovered">{content.ctaText}</a>
+    </div>
+  </div>
+</section>

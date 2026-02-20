@@ -1,0 +1,12 @@
+---
+import FAQSection from './FAQSection';
+import type { FAQContent } from '../../../content/types';
+
+interface Props {
+  content: FAQContent;
+}
+
+const { content } = Astro.props;
+---
+
+<FAQSection client:load content={content} />

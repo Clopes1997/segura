@@ -1,0 +1,73 @@
+---
+import type { TestimonialContent } from '../../../content/types';
+
+interface Props {
+  content: TestimonialContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="testimonials-section overflow-hidden font-base bg-cover relative">
+  <div class="absolute inset-0 z-0 bg-bottom">
+    <img
+      src="/images/testimonial-background.webp"
+      alt=""
+      class="w-full absolute w-full h-full object-cover object-top"
+      fetchpriority="auto"
+      loading="lazy"
+      width="1439"
+      height="636"
+      decoding="async"
+    />
+  </div>
+  
+  <div class="testimonials-container flex relative flex-col bg-gradient-to-r from-almost-black to-transparent">
+    <div class="testimonials-content">
+      <div class="testimonials-wrapper flex container mx-auto relative py-60 flex-col justify-center items-start w-full max-md:max-w-full">
+        <div class="testimonials-inner flex flex-col max-w-full gap-10 w-full md:max-w-xl">
+          <img
+            src="/icons/stars.svg"
+            alt="Stars"
+            class="testimonials-logo object-contain max-w-full w-1/3"
+            width="50"
+            height="60"
+            loading="lazy"
+            decoding="async"
+          />
+          
+          <article class="testimonials-quote text-lg font-light leading-7 text-secure-white break-words w-full">
+            <blockquote class="flex flex-col gap-2">
+              <p class="quote-title text-lg md:text-xl font-semibold text-secure-white font-title">
+                "{content.quote}"
+              </p>
+              <p class="quote-content font-normal text-base text-secure-white">
+                "{content.quoteDetail}"
+              </p>
+              <div class="quote-author font-medium text-sm text-secure-white">
+                - {content.author}
+              </div>
+            </blockquote>
+          </article>
+          
+          <div class="stats-container flex gap-5 justify-between flex-col md:flex-row">
+            {content.stats.map((stat) => (
+              <div class="divider border-l-2 border-solid border-password-green">
+                <div class="stat-block flex flex-col pl-4">
+                  <p class="stat-number self-start text-xl md:text-2xl lg:text-3xl font-bold leading-none text-almost-white">
+                    {stat.number}
+                  </p>
+                  <p class="stat-description text-base leading-7 text-almost-white font-normal" set:html={stat.description} />
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <a href={content.ctaLink} class="white-btn hovered">
+            {content.ctaText}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import homepage from '../content/en/homepage';
+import HeroSection from '../components/sections/HeroSection/HeroSection.astro';
+import PlatformSection from '../components/sections/PlatformSection/PlatformSection.astro';
+import PartnersSection from '../components/sections/PartnersSection/PartnersSection.astro';
+import WhySeguraSection from '../components/sections/WhySeguraSection/WhySeguraSection.astro';
+import FAQSection from '../components/sections/FAQSection/FAQSection.astro';
+import TestimonialsSection from '../components/sections/TestimonialsSection/TestimonialsSection.astro';
+import ComplianceSection from '../components/sections/ComplianceSection/ComplianceSection.astro';
+import SoftwareReviewSection from '../components/sections/SoftwareReviewSection/SoftwareReviewSection.astro';
+import GartnerReportSection from '../components/sections/GartnerReportSection/GartnerReportSection.astro';
+import ComparisonSection from '../components/sections/ComparisonSection/ComparisonSection.astro';
+import SupportSection from '../components/sections/SupportSection/SupportSection.astro';
+import CompetitorsStripSection from '../components/sections/CompetitorsStripSection/CompetitorsStripSection.astro';
+import AwardsSection from '../components/sections/AwardsSection/AwardsSection.astro';
+import BlogCardsSection from '../components/sections/BlogCardsSection/BlogCardsSection.astro';
+import StripeCTASection from '../components/sections/StripeCTASection/StripeCTASection.astro';
+---
+<MainLayout
+  lang="en"
+  title="Segura®, formerly senhasegura - The Complete Identity Security Platform"
+  description="Segura® - The Complete Identity Security Platform. Formerly senhasegura. Privileged Access Management and identity security."
+  canonical={`${Astro.url.origin}/`}
+>
+  <main>
+    <HeroSection content={homepage.hero} />
+    <PlatformSection content={homepage.platform} />
+    <PartnersSection title={homepage.partners.title} />
+    <WhySeguraSection content={homepage.whySegura} />
+    <TestimonialsSection content={homepage.testimonials} />
+    <ComplianceSection content={homepage.compliance} />
+    <SoftwareReviewSection content={homepage.softwareReview} />
+    <GartnerReportSection content={homepage.gartnerReport} />
+    <ComparisonSection content={homepage.comparison} />
+    <SupportSection content={homepage.support} />
+    <CompetitorsStripSection />
+    <AwardsSection content={homepage.awards} />
+    <FAQSection content={homepage.faq} />
+    <BlogCardsSection content={homepage.blogCards} />
+    <StripeCTASection content={homepage.stripeCTA} />
+  </main>
+</MainLayout>

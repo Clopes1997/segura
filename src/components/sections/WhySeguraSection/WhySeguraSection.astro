@@ -1,0 +1,12 @@
+---
+import WhySeguraSection from './WhySeguraSection';
+import type { WhySeguraContent } from '../../../content/types';
+
+interface Props {
+  content: WhySeguraContent;
+}
+
+const { content } = Astro.props;
+---
+
+<WhySeguraSection client:load content={content} />

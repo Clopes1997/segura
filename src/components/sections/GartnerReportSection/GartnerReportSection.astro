@@ -1,0 +1,67 @@
+---
+import type { GartnerReportContent } from '../../../content/types';
+
+interface Props {
+  content: GartnerReportContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="text_media_proportion font-base bg-safe-green py-60 mt-0">
+  <div class="content_container container mx-auto w-full max-md:max-w-full">
+    <div class="proportion_holder w-full grid grid-cols-1 md:grid-cols-12 md:gap-y-8 gap-x-3 md:gap-x-12 items-start gap-10">
+      <div class="text_holder order-2 md:order-none min-w-0 flex flex-col gap-4 h-full justify-center break-words col-span-12 md:col-span-9 text-almost-white border-none">
+        <h2 class="text-4xl font-title text-almost-white font-semibold p-0">
+          {content.title}
+        </h2>
+        <p class="text-xl font-normal p-0 text-almost-white">
+          <span class="font-title text-3xl text-identity-blue">
+            <em>{content.subtitle}</em>
+          </span>
+          <br /><br />
+          {content.introText}
+        </p>
+        <div class="flex flex-col gap-2">
+          {content.items.map((item) => (
+            <div class="flex gap-2 items-center">
+              <div class="flex items-center mr-2">
+                <img
+                  src="/icons/check.svg"
+                  alt=""
+                  class="w-1/60 h-auto flex-shrink-0"
+                  style="display: block; margin: auto 0;"
+                  width="30"
+                  height="30"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <p class="text-almost-white">{item}</p>
+            </div>
+          ))}
+        </div>
+        <div class="btns_holder flex flex-row flex-wrap gap-4 mt-3 p-0">
+          <a class="identity-btn hovered undefined" href={content.ctaLink}>
+            {content.ctaText}
+          </a>
+        </div>
+      </div>
+      <div class="image_holder col-span-12 md:col-span-3">
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-8 grid-cols-1">
+          <div class="flex justify-start md:justify-center">
+            <img
+              src="/images/gartner-challengers.png"
+              alt=""
+              class="img block max-w-full h-auto rounded-10 object-contain w-full"
+              width="2893"
+              height="3200"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
